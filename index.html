@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJS Course</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="spliter">
+        <div class="spliter__logo">
+          <img src="./images/logo.svg" alt="spliter__logo" />
+        </div>
+
+        <div class="spliter__calc">
+          <div class="spliter__calc-wrapper">
+            <div class="spliter__calc-inputs">
+              <div class="spliter__calc-bill">Bill</div>
+              <div class="spliter__calc-input">
+                <img
+                  class="spliter__calc-dollar"
+                  src="./images/icon-dollar.svg"
+                  alt="dollar"
+                />
+                <input class="spliter__calc-right" type="text" v-model="bill" placeholder="0"  @input="validateInput"
+                :style="{ borderColor: inputError ? 'rgb(225, 112, 82)' : '' }"/>
+              </div>
+
+              <div class="spliter__calc-tip">Select Tip %</div>
+
+              <div class="spliter__calc-select" @click="handleButtonClick">
+                <!-- <button class="spliter__calc-btn" data-percentage="5">
+                  5%
+                </button>
+                <button class="spliter__calc-btn" data-percentage="10">
+                  10%
+                </button>
+                <button class="spliter__calc-btn" data-percentage="15">
+                  15%
+                </button>
+                <button class="spliter__calc-btn" data-percentage="25">
+                  25%
+                </button>
+                <button class="spliter__calc-btn" data-percentage="50">
+                  50%
+                </button> -->
+
+                <button v-for="percentage in percentages" key="percentage"
+                 :data-percentage="percentage" :class="{ 'spliter__calc-btn-active': activePercentage === percentage }"
+                class="spliter__calc-btn" 
+                >
+                  {{ percentage }}%
+                </button>
+                <input class="spliter__calc-custom"  placeholder="Custom" v-model="custom" @click.stop>
+                 
+                </input>
+              </div>
+
+              <div class="spliter__calc-people">Number of People</div>
+              <p v-if="inputError" class="error">Enter numbers only.</p>
+              <div class="spliter__calc-number">
+                <img
+                  class="spliter__calc-person"
+                  src="./images/icon-person.svg"
+                  alt="person"
+                />
+                <input
+                  class="spliter__calc-right"
+                  type="text"
+                  v-model="people"
+                  placeholder="0"
+                  @input="validateInput"
+                  :style="{ borderColor: inputError ? 'rgb(225, 112, 82)' : '' }"
+                />
+               
+              </div>
+            </div>
+
+            <div class="spliter__calc-res">
+              <div class="spliter__res-wrapper">
+                <div class="spliter__res-amount">
+                  <div>
+                    <div class="spliter__tip-amount">
+                      <span>Tip Amount</span>
+                    </div>
+                    <div class="spliter__res-person">
+                      <span>/ person</span>
+                    </div>
+                  </div>
+
+                  <div class="spliter__total">${{tip}}</div>
+                </div>
+
+                <div class="spliter__res-total">
+                  <div>
+                    <div class="spliter__tip-total">
+                      <span>Total</span>
+                    </div>
+                    <div class="spliter__res-person">
+                      <span>/ person</span>
+                    </div>
+                  </div>
+                  <div class="spliter__total spliter__total-dif">
+                    ${{total}}
+                  </div>
+                </div>
+                <div class="spliter__calc-reset">
+                  <button class="btn" @click="resetCalc"><span>Reset</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
