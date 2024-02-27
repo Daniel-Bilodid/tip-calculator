@@ -9,10 +9,6 @@ Vue.createApp({
       people: null,
       custom: null,
       inputValue: "",
-      inputErrors: {
-        bill: false,
-        people: false,
-      },
     };
   },
 
@@ -37,9 +33,19 @@ Vue.createApp({
       if (this.people !== cleanedValue) {
         this.people = this.people.replace(/\D/g, "");
         this.inputError = true;
-        console.log(this.inputError);
       } else {
         this.inputError = false;
+      }
+    },
+
+    validateInputTotal() {
+      const cleanedValue = this.bill.replace(/\D/g, "");
+
+      if (this.bill !== cleanedValue) {
+        this.bill = this.bill.replace(/\D/g, "");
+        this.inputErrorTotal = true;
+      } else {
+        this.inputErrorTotal = false;
       }
     },
 
@@ -67,6 +73,7 @@ Vue.createApp({
       this.bill = 0;
       this.people = 0;
       this.activePercentage = null;
+      this.custom = null;
     },
     // customPercentage() {
     //   this.tip = this.total * (this.custom / 100);

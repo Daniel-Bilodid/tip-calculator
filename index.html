@@ -3,6 +3,7 @@
   <head>
     <title>VueJS Course</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <div id="app" v-cloak>
@@ -21,8 +22,9 @@
                   src="./images/icon-dollar.svg"
                   alt="dollar"
                 />
-                <input class="spliter__calc-right" type="text" v-model="bill" placeholder="0"  @input="validateInput"
-                :style="{ borderColor: inputError ? 'rgb(225, 112, 82)' : '' }"/>
+                <p v-if="inputErrorTotal" class="error">Enter numbers only.</p>
+                <input class="spliter__calc-right" type="text" v-model="bill" placeholder="0"  @input="validateInputTotal"
+                :style="{ borderColor: inputErrorTotal ? 'rgb(225, 112, 82)' : '' }"/>
               </div>
 
               <div class="spliter__calc-tip">Select Tip %</div>
