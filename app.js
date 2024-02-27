@@ -9,6 +9,8 @@ Vue.createApp({
       people: null,
       custom: null,
       inputValue: "",
+      inputError: false,
+      inputErrorTotal: false,
     };
   },
 
@@ -52,6 +54,8 @@ Vue.createApp({
     calculateTotal() {
       if (this.bill && this.people) {
         this.total = this.bill / this.people;
+
+        this.total = this.total.toFixed(2);
       }
     },
     handleButtonClick(event) {
@@ -64,7 +68,9 @@ Vue.createApp({
         this.activePercentage = percentage;
 
         this.tip = this.total * (percentage / 100);
+
         this.tip = this.tip.toFixed(2);
+        console.log(this.tip);
       }
     },
     resetCalc() {

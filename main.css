@@ -284,6 +284,10 @@ body {
   margin-left: 97px;
 }
 
+.btn:hover {
+  background: rgb(159, 232, 223);
+}
+
 .btn span {
   margin-right: 5px;
 }
@@ -300,8 +304,8 @@ body {
   margin-bottom: 0px;
 }
 
-.spliter__calc-number input:focus {
-  border: 1px solid rgb(38, 194, 174);
+.spliter__calc-right:hover {
+  border: 2px solid rgb(38, 194, 174);
 }
 
 @media (max-width: 500px) {
@@ -358,4 +362,8 @@ body {
     font-size: 32px;
     margin-left: 65px;
   }
+}
+
+[v-cloak] {
+  display: none;
 }
