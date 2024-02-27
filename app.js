@@ -4,8 +4,8 @@ Vue.createApp({
       percentages: [5, 10, 15, 25, 50],
       activePercentage: null,
       bill: null,
-      tip: 0,
-      total: 0,
+      tip: "0.00",
+      total: "0.00",
       people: null,
       custom: null,
       inputValue: "",
@@ -74,10 +74,10 @@ Vue.createApp({
       }
     },
     resetCalc() {
-      this.tip = 0;
-      this.total = 0;
-      this.bill = 0;
-      this.people = 0;
+      this.tip = "0.00";
+      this.total = "0.00";
+      this.bill = null;
+      this.people = null;
       this.activePercentage = null;
       this.custom = null;
     },
